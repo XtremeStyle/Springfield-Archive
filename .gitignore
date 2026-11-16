@@ -1,0 +1,136 @@
+# ============================================================================
+# Springfield Archive — .gitignore
+# Java, Maven, IntelliJ, VS Code, OS artifacts, temp files and secrets
+# ============================================================================
+
+# ---------- Secrets and environment (never commit real ones) ----------
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+id_rsa
+id_rsa.*
+id_ed25519
+id_ed25519.*
+*.pub.key
+secrets/
+**/application-local.*
+**/application-secret.*
+**/application-secrets.*
+credentials.json
+service-account*.json
+
+# ---------- Java ----------
+*.class
+*.log
+logs/
+hs_err_pid*
+replay_pid*
+pid.txt
+*.hprof
+*.jfr
+*.war
+*.ear
+*.sar
+dependency-reduced-pom.xml
+
+# ---------- Maven ----------
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+.flattened-pom.xml
+# Keep the wrapper committed for reproducible builds:
+# (mvnw, mvnw.cmd, .mvn/wrapper/*) are intentionally NOT ignored
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar.sha256
+!.mvn/wrapper/maven-wrapper.jar
+
+# ---------- Gradle (in case it ever appears) ----------
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+
+# ---------- Node / frontend tooling ----------
+node_modules/
+dist/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+.vite/
+.cache/
+
+# ---------- IntelliJ IDEA ----------
+.idea/
+*.iml
+*.ipr
+*.iws
+out/
+.idea_modules/
+
+# ---------- VS Code ----------
+.vscode/*
+!.vscode/extensions.json
+
+# ---------- Eclipse / NetBeans (defensive) ----------
+.classpath
+.project
+.settings/
+bin/
+nbproject/private/
+nbbuild/
+nbdist/
+.nb-gradle/
+
+# ---------- Linux ----------
+*~
+.directory
+.fuse_hidden*
+.nfs*
+lost+found/
+
+# ---------- Windows ----------
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# ---------- macOS ----------
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# ---------- Temp and backup files ----------
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+*.orig
+*.rej
+*.old
+~$*
+*.part
+*.crdownload
+
+# ---------- Test / coverage artifacts ----------
+coverage/
+*.lcov
+jacoco.exec
+*.ec
+surefire-reports/
+failsafe-reports/
