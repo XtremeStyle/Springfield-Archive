@@ -1,9 +1,10 @@
 # ============================================================================
 # Springfield Archive — .gitignore
-# Java, Maven, IntelliJ, VS Code, OS artifacts, temp files and secrets
+# Java, Maven, IntelliJ, VS Code, artefactos del sistema operativo,
+# archivos temporales y secretos
 # ============================================================================
 
-# ---------- Secrets and environment (never commit real ones) ----------
+# ---------- Secretos y entorno (los reales nunca deben subirse) ----------
 .env
 .env.*
 !.env.example
@@ -47,18 +48,19 @@ pom.xml.versionsBackup
 pom.xml.next
 release.properties
 .flattened-pom.xml
-# Keep the wrapper committed for reproducible builds:
-# (mvnw, mvnw.cmd, .mvn/wrapper/*) are intentionally NOT ignored
+# El wrapper se mantiene en el repositorio para que la versión de Maven
+# empleada sea conocida y controlada:
+# (mvnw, mvnw.cmd, .mvn/wrapper/*) se incluyen a propósito y NO se ignoran
 .mvn/timing.properties
 .mvn/wrapper/maven-wrapper.jar.sha256
 !.mvn/wrapper/maven-wrapper.jar
 
-# ---------- Gradle (in case it ever appears) ----------
+# ---------- Gradle (por si aparece en el futuro) ----------
 .gradle/
 build/
 !gradle/wrapper/gradle-wrapper.jar
 
-# ---------- Node / frontend tooling ----------
+# ---------- Herramientas frontend de Node ----------
 node_modules/
 dist/
 npm-debug.log*
@@ -80,7 +82,7 @@ out/
 .vscode/*
 !.vscode/extensions.json
 
-# ---------- Eclipse / NetBeans (defensive) ----------
+# ---------- Eclipse / NetBeans (defensivo) ----------
 .classpath
 .project
 .settings/
@@ -114,7 +116,7 @@ $RECYCLE.BIN/
 .Spotlight-V100
 .Trashes
 
-# ---------- Temp and backup files ----------
+# ---------- Archivos temporales y de respaldo ----------
 *.tmp
 *.temp
 *.bak
@@ -127,7 +129,7 @@ $RECYCLE.BIN/
 *.part
 *.crdownload
 
-# ---------- Test / coverage artifacts ----------
+# ---------- Artefactos de tests / cobertura ----------
 coverage/
 *.lcov
 jacoco.exec
