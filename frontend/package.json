@@ -1,0 +1,14 @@
+{
+  "name": "springfield-archive-frontend",
+  "version": "1.1.1",
+  "private": true,
+  "type": "module",
+  "description": "Frontend estático de Springfield Archive (HTML/CSS/ES Modules)",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "test": "node --test",
+    "validate": "node ../scripts/validate-static.mjs"
+  }
+}

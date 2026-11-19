@@ -1,44 +1,47 @@
 # Springfield Archive
 
-Un proyecto de software desarrollado como **entrega académica pública y pieza de portafolio profesional**.
+Soy **José Manuel Valencia Gallego (XtremeStyle)**. Desarrollé Springfield Archive como proyecto de aprendizaje de **Aulas de Ciudad**, para poner en práctica Java, programación orientada a objetos, bases de datos, JavaScript, diseño web y el consumo de una API pública.
 
-Springfield Archive se está diseñando y construyendo de forma incremental, poniendo el énfasis en la calidad del código, la seguridad, la reproducibilidad y las buenas prácticas de ingeniería. Este repositorio es la fuente de verdad del proyecto y se desarrolla en abierto.
+La idea es explorar Springfield de una forma distinta: consultar personajes, lugares y episodios, guardar favoritos, jugar **Springfield Files** y conocer algunos de mis proyectos en la sección **Sobre mí**.
 
-> **Estado: fase inicial.** Todavía no existe código de la aplicación. Este repositorio contiene únicamente la inicialización del proyecto (licencia, reglas de ignorado y documentación). Las funcionalidades se documentarán aquí solo cuando existan y estén verificadas.
+## ¿Cómo funciona?
 
-## De qué trata el proyecto
+- **Frontend:** HTML, CSS y JavaScript con módulos ES.
+- **Backend:** Java 21, Spring Boot y API REST propia.
+- **Base de datos:** PostgreSQL y migraciones Flyway.
+- **Datos externos:** [The Simpsons API](https://thesimpsonsapi.com/).
 
-Springfield Archive explora el diseño de un archivo digital: organizar, describir y presentar material catalogado mediante una aplicación web mantenible. El alcance y las funcionalidades se definirán y documentarán a medida que avance el proyecto. No se presentarán funcionalidades como implementadas sin que hayan sido desarrolladas y verificadas.
+Los datos se importan desde la API pública, se guardan en PostgreSQL y mi frontend los consulta a través del backend Java. No se inventan personajes ni relaciones para completar los resultados.
 
-## Aviso legal de propiedad intelectual
+## Cómo ejecutarlo en Omarchy / Linux
 
-Springfield Archive es un **proyecto fan y académico no oficial**, desarrollado con fines educativos y de portafolio. **No está afiliado, autorizado, patrocinado ni respaldado por** The Walt Disney Company, 20th Century Studios, 20th Television, Gracie Films, Matt Groening ni ningún otro titular de derechos de *The Simpsons*.
+Necesitas **Java 21, Docker con Compose y conexión a Internet** para descargar Maven la primera vez.
 
-«The Simpsons», sus personajes, nombres, títulos de episodios, imágenes, audio, guiones y marcas asociadas son propiedad de sus respectivos titulares. Nada de lo contenido en este repositorio otorga ni implica licencia alguna sobre propiedad intelectual de terceros, y en este repositorio no se distribuyen activos de terceros.
+```bash
+./INICIAR_SPRINGFIELD.run iniciar
+```
 
-## Stack previsto y enfoque
+Abre `http://127.0.0.1:8080`. Después, desde otra terminal:
 
-Decisiones aprobadas hasta ahora:
+```bash
+./INICIAR_SPRINGFIELD.run sincronizar
+./INICIAR_SPRINGFIELD.run estado
+```
 
-- **Java 21** (OpenJDK)
-- **Spring Boot** (previsto)
-- **Maven Wrapper** — permite utilizar una versión definida de Maven sin requerir una instalación global.
-- **PostgreSQL** ejecutándose en **Docker Compose** para desarrollo — el contenedor de la base de datos **no** se arrancará hasta que el desarrollo del backend lo necesite
-- Entrega incremental: cambios pequeños y revisables, con verificación en cada paso
+Antes de entregarlo también puedes comprobar:
 
-## Principios
+```bash
+npm --prefix frontend test
+npm --prefix frontend run validate
+cd backend && ./mvnw -B verify
+```
 
-- Calidad por encima de la velocidad
-- Sin credenciales, tokens ni datos privados en el repositorio — nunca
-- Entornos reproducibles mediante versiones de herramientas y dependencias controladas, y pasos de configuración documentados
-- Cada cambio se verifica antes de publicarse
+La última prueba necesita Docker activo. La sincronización debe terminar en `completed` para los tres catálogos.
 
-## Flujo de desarrollo
+## Publicación
 
-Este proyecto sigue un flujo incremental basado en la revisión: cada fase se propone, se revisa y se aprueba antes de su implementación. Consulta el historial de commits para ver la evolución del proyecto.
+El frontend está preparado para **Netlify**, pero requiere un **backend Java publicado por HTTPS** y una base PostgreSQL disponible. Consulta **[SUBIR_A_GITHUB_Y_NETLIFY.md](SUBIR_A_GITHUB_Y_NETLIFY.md)** para los pasos y variables de entorno.
 
-## Licencia
+Mi perfil: [github.com/XtremeStyle](https://github.com/XtremeStyle). Algunos proyectos del portafolio son colaborativos y se reconocen con sus respectivos créditos.
 
-El código original de este proyecto se publica bajo la **Licencia MIT** — consulta [LICENSE](LICENSE).
-
-La licencia MIT se aplica **exclusivamente al código original creado para este repositorio**. **No** otorga derecho alguno sobre The Simpsons — sus marcas, nombres, personajes, episodios, imágenes, audio, guiones — ni sobre ninguna otra propiedad intelectual de terceros. Este proyecto no concede ni implica licencia alguna sobre propiedad intelectual de terceros.
+Proyecto académico independiente, no afiliado a Los Simpson. Datos e imágenes externos: derechos de sus titulares; atribuciones en [docs/ATTRIBUTIONS.md](docs/ATTRIBUTIONS.md). Código propio bajo licencia MIT.

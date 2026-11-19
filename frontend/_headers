@@ -1,0 +1,6 @@
+# Respaldo local para servir frontend/ como estático (p. ej. previsualizaciones).
+# El build de Netlify (scripts/netlify-build.mjs) SOBRESCRIBE este archivo con
+# una CSP más estricta acotada al origen HTTPS real del backend.
+# Nunca incluye secretos.
+/*
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: https://cdn.thesimpsonsapi.com; media-src 'self'; connect-src 'self' https:; font-src 'self'

@@ -1,0 +1,42 @@
+/* Springfield Archive · identidad visual original: archivo cívico retro-futurista */
+:root {
+    --ink: #18262e;
+    --ink-soft: #52636b;
+    --night: #14252d;
+    --night-deep: #0c191f;
+    --cream: #f5f1e8;
+    --paper: #fffdf7;
+    --paper-tint: #e8e2d5;
+    --springfield-yellow: #f6d44a;
+    --yellow-dark: #e4b821;
+    --skweek-blue: #92cfda;
+    --moat-teal: #2f777b;
+    --krusty-green: #8ec3a1;
+    --donut-pink: #f6a6b7;
+    --warn: #ae483d;
+    --ok: #256950;
+    --line: #d7d7cb;
+    --radius-s: 9px;
+    --radius-m: 16px;
+    --radius-l: 26px;
+    --shadow-card: 0 13px 35px rgba(18, 39, 45, .075);
+    --shadow-pop: 0 5px 0 #0e1a20;
+    --font-display: "Arial Black", "Trebuchet MS", system-ui, sans-serif;
+    --font-body: "Trebuchet MS", "Segoe UI", system-ui, sans-serif;
+    --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--cream); color: var(--ink); font: 400 16px/1.6 var(--font-body); }
+body::before { content: ''; position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: .19; background-image: radial-gradient(#818d83 .6px, transparent .6px); background-size: 8px 8px; }
+a { color: var(--moat-teal); }
+a:hover { color: var(--ink); }
+button,input,select { font: inherit; }
+button { cursor: pointer; }
+img,svg { max-width: 100%; }
+::selection { background: var(--springfield-yellow); color: var(--ink); }
+:focus-visible { outline: 3px solid #198e9b; outline-offset: 3px; }
+[hidden] { display: none !important; }
+.skip-link { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.skip-link:focus { position: fixed; z-index: 999; left: 1rem; top: 1rem; width: auto; height: auto; padding: .55rem 1rem; background: var(--springfield-yellow); color: var(--ink); border-radius: 8px; font-weight: 800; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; } }
