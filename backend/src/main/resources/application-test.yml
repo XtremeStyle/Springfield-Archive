@@ -1,0 +1,16 @@
+# test: perfil EXPLÍCITO de pruebas automatizadas. No se activa junto con
+# local ni por defecto; las pruebas lo seleccionan explícitamente.
+# Sin servicios externos: la conexión la inyecta Testcontainers
+# (@ServiceConnection -> Spring autoconfigura el datasource dinámicamente).
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    enabled: true

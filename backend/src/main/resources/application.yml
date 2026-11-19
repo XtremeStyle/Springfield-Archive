@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: springfield-archive-api
+  profiles:
+    # Perfil restrictivo por omisión. El lanzador activa local de forma explícita.
+    # Nunca habilitar Swagger o credenciales de ejemplo por olvidar una variable.
+    default: prod
+  flyway:
+    enabled: true
+
+# Cliente HTTP para The Simpsons API. Sin credenciales.
+# Timeouts configurables vía entorno:
+#   THESIMPSONSAPI_BASE_URL, THESIMPSONSAPI_CONNECT_TIMEOUT, THESIMPSONSAPI_READ_TIMEOUT
+thesimpsonsapi:
+  base-url: ${THESIMPSONSAPI_BASE_URL:https://thesimpsonsapi.com/api}
+  connect-timeout: ${THESIMPSONSAPI_CONNECT_TIMEOUT:2s}
+  read-timeout: ${THESIMPSONSAPI_READ_TIMEOUT:5s}
+
+# NOTA: la configuración de conexión a la base de datos NO se define aquí
+# globalmente. En local la aporta application-local.yml; en test la inyecta
+# Testcontainers (@ServiceConnection); en prod debe venir de variables de
+# entorno externas (SPRING_DATASOURCE_URL/USERNAME/PASSWORD) sin fallback local.
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      show-details: never

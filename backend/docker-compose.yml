@@ -1,0 +1,40 @@
+# ============================================================
+# Springfield Archive — docker-compose (backend/)
+# PostgreSQL 18 oficial, volumen nombrado y healthcheck real.
+#
+# Uso:
+#   cp .env.example .env      # rellena valores ficticios/locales
+#   docker compose up -d      # levanta PostgreSQL (solo backend local)
+#   docker compose ps         # ver estado del healthcheck
+#   docker compose logs -f    # seguir logs
+#   docker compose stop       # detiene SIN borrar el volumen
+#
+# NUNCA ejecutes 'down -v' ni 'volume prune': borraría los datos.
+# Spring Boot NO carga .env automáticamente: el backend se arranca con
+# variables de entorno (ver docs/OPERATIONS.md dentro de backend/).
+# ============================================================
+
+services:
+  postgres:
+    image: postgres:18.7       # revisión de seguridad 2026-11-12; conservamos major 18
+    container_name: springfield-archive-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:?Define POSTGRES_USER en .env (ver .env.example)}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Define POSTGRES_PASSWORD en .env (ver .env.example)}
+      POSTGRES_DB: ${POSTGRES_DB:?Define POSTGRES_DB en .env (ver .env.example)}
+    volumes:
+      # PostgreSQL 18 espera el montaje en /var/lib/postgresql
+      # (layout distinto a <=17: cambia tu volumen si migrás de imagen).
+      - springfield-postgres-data:/var/lib/postgresql
+    ports:
+      # Solo loopback; nunca publiques 5432 a todas las interfaces
+      - "127.0.0.1:5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U \"$$POSTGRES_USER\" -d \"$$POSTGRES_DB\""]
+      interval: 5s
+      timeout: 3s
+      retries: 12
+
+volumes:
+  springfield-postgres-data:

@@ -1,0 +1,53 @@
+# prod: configuración preparada para producción futura (aún no desplegada).
+# Sin credenciales NI FALLBACK de conexión local.
+#
+# El backend en producción exige que se defina EXTERNAMENTE:
+#   SPRING_DATASOURCE_URL      (p. ej. jdbc:postgresql://<host>/<db>)
+#   SPRING_DATASOURCE_USERNAME
+#   SPRING_DATASOURCE_PASSWORD
+# Spring Boot 4 mapea estas variables mediante Relaxed Binding a
+# spring.datasource.url / username / password. Si faltan, el datasource no
+# podrá crearse y la aplicación NO ARRANCARÁ (fail-fast intencionado).
+# Swagger/OpenAPI DESHABILITADO. Actuator expone únicamente health.
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      show-details: never
+
+springdoc:
+  api-docs:
+    enabled: false
+  swagger-ui:
+    enabled: false
+
+# Render y plataformas similares terminan TLS y inyectan PORT.
+# forward-headers-strategy: framework hace que Spring vea la petición como
+# segura (X-Forwarded-Proto), imprescindible para que HSTS se emita en prod.
+server:
+  port: ${PORT:10000}
+  forward-headers-strategy: framework
+  shutdown: graceful
+  error:
+    include-message: never
+    include-binding-errors: never
+    include-stacktrace: never
+  tomcat:
+    connection-timeout: 10s
+    max-http-form-post-size: 16KB
+
+spring:
+  lifecycle:
+    timeout-per-shutdown-phase: 20s
+  datasource:
+    hikari:
+      maximum-pool-size: 3
+      connection-timeout: 10000
+
+# Opcional para frontend Netlify (HTTPS): valor exacto p. ej.
+# SPRINGFIELD_CORS_ALLOWED_ORIGIN=https://springfield-archive.netlify.app
+# Sin esta variable el backend NO permite consultas cross-origin desde navegadores.

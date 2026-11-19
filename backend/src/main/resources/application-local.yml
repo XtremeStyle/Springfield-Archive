@@ -1,0 +1,36 @@
+# local: desarrollo en esta máquina.
+# Swagger/OpenAPI y Actuator/health habilitados; detalles de health ocultos.
+# Conexión a PostgreSQL local: variables de entorno o, en su defecto,
+# el fallback de loopback definido aquí SOLO para desarrollo local.
+# El frontend estático se sirve SAME-ORIGIN desde ./frontend (ejecutar
+# el backend desde la raíz del repositorio, vea OPERATIONS.md).
+
+server:
+  address: 127.0.0.1
+
+spring:
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://127.0.0.1:5432/springfield_archive}
+    username: ${SPRING_DATASOURCE_USERNAME:}
+    password: ${SPRING_DATASOURCE_PASSWORD:}
+    hikari:
+      maximum-pool-size: 5
+      connection-timeout: 3000
+  web:
+    resources:
+      static-locations: classpath:/static/,file:../frontend/
+      cache:
+        cachecontrol:
+          max-age: 5
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    enabled: true
