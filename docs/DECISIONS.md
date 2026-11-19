@@ -195,3 +195,12 @@ Estado: correcciones aplicadas y verificadas en Omarchy antes de publicar.
 - `verify-apis.py --upstream` y `--local --require-synced`: 6/6 y 9/9 comprobaciones.
 - Navegador (Chromium, API real): portada, catálogos, fichas, favoritos, Sobre mí (foto), latas Duff, juego y 404 en 1366×768, 390×844 y 320×700, sin errores de consola.
 - Decisión: `frontend/tests/` sigue publicándose con el sitio (repo público de todos modos; sin secretos ni datos privados). Riesgo aceptado y documentado.
+
+## 2026-11-18 (tarde) — Despliegue público verificado y CSP de la insignia Netlify
+
+- **GitHub**: PR #1 (release/springfield-1.1.1 → main, merge squash `50a8ff8`) y PR #2 (migración `V8__relax_character_age_check.sql` → `8a0c83f`). CI verde en ambos (frontend + Testcontainers).
+- **Neon** (plan Free, región AWS US East 2): proyecto `springfield-archive`, PostgreSQL 18, Flyway V1–V8 aplicadas el 2026-11-18/19. Importación completa verificada vía `/api/v1/sync/status`: personajes completed (1142; 1222 con editorial), episodios 768/768, lugares 477/477, 0 errores. V7 acotaba `age` a 10 000; el proveedor publica edades ficcionales (p. ej. Kodos, 1 000 000) y la importación completa fallaba en la página 3 → V8 amplía el tope a 2·10⁹ sin reescribir V7.
+- **Render** (plan Free): web service `springfield-archive-api` (Docker, `backend/Dockerfile`, health `/actuator/health`, Ohio). Primera sincronización fallida por V7; tras V8 verificada completa en el servidor. Servicio público en `https://springfield-archive-api.onrender.com`.
+- **Netlify** (plan Free): `springfield-archive.netlify.app`, build `node scripts/netlify-build.mjs`, publish `frontend/`, rama `main`, visibilidad pública (estaba "Private · only you"; se abrió explícitamente). `SPRINGFIELD_BACKEND_ORIGIN` se eliminó como "secret" y se recreó como variable pública: el build fail-closed escaneaba el valor en `frontend/_headers`/`deployment-config.js` y rechazaba publicar (correcto para un secreto, falso positivo para una URL pública).
+- **Insignia HUD gratuita de Netlify** (`/.netlify/scripts/hud`): inyecta un iframe same-origin con dos bloques inline fijos (`<style>`, `<script>`; hashes estables para la variante `public`). Nuestra CSP `script-src 'self'`/`style-src 'self'` los bloqueaba en cada página. `netlify-build.mjs` añade ahora los dos hashes SHA-256 a la CSP generada; no se relaja a `'unsafe-inline'`.
+- **Nota operativa**: Render Free suspende el servicio por inactividad; la primera petición puede tardar ~50 s. El frontend ya muestra estado y reintenta (75 s).
