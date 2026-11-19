@@ -1,0 +1,10 @@
+# Copiar al directorio raíz como netlify.toml SOLO al conocer la URL real del backend.
+# La web estática sin proxy NO podrá cargar la wiki (depende de Java /api/v1).
+[build]
+  publish = "frontend"
+
+[[redirects]]
+  from = "/api/*"
+  to = "https://TU-SERVICIO-JAVA.onrender.com/api/:splat"
+  status = 200
+  force = true

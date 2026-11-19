@@ -1,0 +1,49 @@
+name: quality
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  frontend:
+    name: Frontend ES Modules
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Pruebas y sintaxis JavaScript
+        run: |
+          cd frontend
+          npm test
+          npm run validate
+          for file in js/*.js; do node --check "$file"; done
+          node --check ../scripts/netlify-build.mjs
+      - name: Verificar higiene de distribución y secretos
+        run: python3 scripts/audit_release.py
+      - name: Validación del ejecutable y configuración
+        run: |
+          python3 scripts/test_launcher.py
+          python3 -m unittest discover -s scripts -p 'test*.py' 
+  backend:
+    name: Java 21 + PostgreSQL Testcontainers
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+          cache-dependency-path: backend/pom.xml
+      - name: Seguridad Java pura (sin dependencias externas)
+        run: bash scripts/test-java-security.sh
+      - name: Tests Maven con Docker del runner
+        working-directory: backend
+        run: ./mvnw -B verify

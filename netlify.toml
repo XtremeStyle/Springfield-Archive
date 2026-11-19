@@ -1,0 +1,32 @@
+# Frontend estático. El build necesita SPRINGFIELD_BACKEND_ORIGIN en Netlify.
+# No publicar si el origen Java no está funcionando y conectado a PostgreSQL.
+[build]
+  publish = "frontend"
+  command = "node scripts/netlify-build.mjs"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    X-Frame-Options = "DENY"
+    Cross-Origin-Opener-Policy = "same-origin"
+    Cross-Origin-Resource-Policy = "same-origin"
+    Strict-Transport-Security = "max-age=31536000"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+# HTML changes often: avoid visitors staying on an obsolete release.
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=300, must-revalidate"
+
+[[headers]]
+  for = "/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=300, must-revalidate"
