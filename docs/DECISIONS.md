@@ -204,3 +204,14 @@ Estado: correcciones aplicadas y verificadas en Omarchy antes de publicar.
 - **Netlify** (plan Free): `springfield-archive.netlify.app`, build `node scripts/netlify-build.mjs`, publish `frontend/`, rama `main`, visibilidad pública (estaba "Private · only you"; se abrió explícitamente). `SPRINGFIELD_BACKEND_ORIGIN` se eliminó como "secret" y se recreó como variable pública: el build fail-closed escaneaba el valor en `frontend/_headers`/`deployment-config.js` y rechazaba publicar (correcto para un secreto, falso positivo para una URL pública).
 - **Insignia HUD gratuita de Netlify** (`/.netlify/scripts/hud`): inyecta un iframe same-origin con dos bloques inline fijos (`<style>`, `<script>`; hashes estables para la variante `public`). Nuestra CSP `script-src 'self'`/`style-src 'self'` los bloqueaba en cada página. `netlify-build.mjs` añade ahora los dos hashes SHA-256 a la CSP generada; no se relaja a `'unsafe-inline'`.
 - **Nota operativa**: Render Free suspende el servicio por inactividad; la primera petición puede tardar ~50 s. El frontend ya muestra estado y reintenta (75 s).
+
+
+## 2026-11-19 — Cierre de la publicación (PRs #3–#6) y README con URLs reales
+
+- PR #3 `fix/netlify-csp-hud`: primer hash del HUD Netlify (style). PR #4: segundo estilo (popover). PR #5: tercero (mini). Sin `unsafe-inline`; el HUD gratuito de Netlify es inevitable.
+- Consola limpia en producción en todas las páginas revisadas (0 errores) tras permitir los 4 hashes SHA-256 del HUD (1 script + 3 estilos).
+- README y docs/DESPLIEGUE.md actualizados con URLs reales: https://springfield-archive.netlify.app (Netlify), https://springfield-archive-api.onrender.com (Render Free), Neon Free (Ohio, PostgreSQL 18, V1–V8).
+- Verificación pública final: página inicial, personajes (24 tarjetas reales), episodios, lugares, fichas, créditos, favoritos, sobre-mí (foto visible, 720×900), juego Springfield Files (4 opciones reales, verify habilitado) — todo sin errores de consola; imágenes 24/24 tras carga diferida; CORS: fetch desde el origen Netlify → HTTP 200; /actuator/health UP tras despertar.
+- Hallazgo operativo: el primer despliegue de Netlify falló porque SPRINGFIELD_BACKEND_ORIGIN estaba marcado como secreto y el escáner de Netlify detectaba su valor en el paquete; era una URL pública → se recreó como variable pública.
+- Render Free se suspende por inactividad: la primera petición tras una pausa puede tardar ~50 s; el frontend ya informa y reintenta.
+- Bug propio corregido en el camino: pkill -f demasiado amplio mató las instancias locales (8080/8081); se restauró el servicio local en 8080 desde el último main.
