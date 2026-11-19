@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Springfield Archive — El archivo no oficial de Springfield</title>
+<meta name="description" content="Investiga el universo de Springfield. Explora personajes, episodios y lugares con datos de The Simpsons API, favoritos y expedientes interactivos.">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png"><link rel="apple-touch-icon" href="/assets/apple-touch-icon.png"><meta name="theme-color" content="#14252d"><link rel="stylesheet" href="/css/main.css?v=1.1.1"><link rel="stylesheet" href="/css/final.css?v=1.1.1">
+</head>
+<body>
+<a class="skip-link" href="#main">Saltar al contenido</a><header class="topbar" data-chrome="topbar"><div class="topbar-inner"><a class="brand" href="/index.html" aria-label="Springfield Archive, inicio"><img src="/assets/favicon.svg" width="44" height="44" alt=""><span class="brand-lines"><strong>SPRINGFIELD</strong><em>ARCHIVE</em></span></a></div></header>
+<main id="main">
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-copy">
+      <span class="eyebrow">ARCHIVO MUNICIPAL / ACCESO PÚBLICO</span>
+      <h1 id="hero-title">Todo Springfield.<br><em>Un archivo.</em></h1>
+      <p>Personajes sospechosos, lugares memorables y episodios para volver a investigar. Una enciclopedia hecha con datos reales, Java y una cantidad cuestionable de papeleo.</p>
+      <div class="hero-actions"><a class="cta" href="/personajes.html">Explorar expedientes <span aria-hidden="true">↗</span></a><a class="hero-quiet-link" href="/game.html">Resolver un caso →</a></div>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <div class="hero-stamp">SPRINGFIELD<br>ARCHIVO<br>NO OFICIAL</div>
+      <svg class="hero-art" viewBox="0 0 580 510" role="presentation" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="sky" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#385a61"/><stop offset="1" stop-color="#182e3a"/></linearGradient><linearGradient id="paper" x1="0" x2="1"><stop stop-color="#f9dfa2"/><stop offset="1" stop-color="#f3bd68"/></linearGradient></defs>
+        <rect width="580" height="510" fill="url(#sky)"/><circle cx="430" cy="120" r="98" fill="#e7c858"/><circle cx="430" cy="120" r="118" fill="none" stroke="#e7c858" opacity=".2" stroke-width="2"/>
+        <g fill="#9fc6b9" opacity=".8"><circle cx="65" cy="62" r="3"/><circle cx="120" cy="125" r="2"/><circle cx="326" cy="59" r="2"/><circle cx="546" cy="267" r="3"/><circle cx="304" cy="177" r="2"/></g>
+        <path d="M0 338L50 312 91 328 142 294 200 314 247 298 311 336 378 304 460 318 512 288 580 314V510H0Z" fill="#253f45"/>
+        <g stroke="#192f34" stroke-width="7" stroke-linejoin="round">
+          <rect x="68" y="246" width="103" height="220" fill="#e8bd7a"/><rect x="84" y="219" width="71" height="32" fill="#f6d44a"/><path d="M100 219v-44h38v44" fill="#a4b1a5"/>
+          <rect x="204" y="208" width="161" height="258" rx="3" fill="url(#paper)"/><path d="M219 209v-35h133v35" fill="#c79b67"/><path d="M222 175l63-58 68 58" fill="#ebd49c"/>
+          <rect x="392" y="281" width="143" height="185" fill="#8cb2a9"/><path d="M397 283l45-69 43 67" fill="#d99f69"/><rect x="471" y="247" width="28" height="37" fill="#d99f69"/>
+        </g>
+        <g fill="#304f57"><rect x="87" y="274" width="24" height="40"/><rect x="125" y="274" width="24" height="40"/><rect x="87" y="338" width="24" height="40"/><rect x="125" y="338" width="24" height="40"/><rect x="235" y="240" width="30" height="43"/><rect x="294" y="240" width="30" height="43"/><rect x="235" y="305" width="30" height="43"/><rect x="294" y="305" width="30" height="43"/><rect x="415" y="316" width="24" height="34"/><rect x="471" y="316" width="24" height="34"/></g>
+        <path d="M275 465v-83c0-18 14-31 31-31s31 13 31 31v83" fill="#3c5152" stroke="#192f34" stroke-width="7"/>
+        <path d="M0 446q130-30 244-7t336-18v89H0Z" fill="#1b3234"/><path d="M0 470q140-20 280 0t300-14" stroke="#f6d44a" stroke-opacity=".65" stroke-width="4" fill="none" stroke-dasharray="18 16"/>
+        <g transform="translate(40 390) rotate(-8)"><rect width="159" height="76" rx="6" fill="#f6d44a" stroke="#14252d" stroke-width="4"/><text x="79" y="27" font-family="monospace" font-size="11" font-weight="bold" text-anchor="middle" fill="#152b32">DEPARTAMENTO DE</text><text x="79" y="50" font-family="Arial Black" font-size="20" text-anchor="middle" fill="#152b32">ARCHIVOS</text><path d="M16 60h127" stroke="#152b32" stroke-width="2"/></g>
+        <rect x="0" y="503" width="580" height="7" fill="#f6d44a"/>
+      </svg>
+    </div>
+    <div class="hero-bottom-bar" aria-hidden="true"></div>
+  </section>
+
+  <div class="search-strip"><div class="search-strip-label"><strong>Buscador de expedientes</strong><small>Una pista, un personaje, una historia</small></div>
+    <form class="quick-search" action="/personajes.html" method="get" role="search"><input name="q" type="search" aria-label="Buscar un personaje" placeholder="¿A quién buscas en Springfield?" maxlength="120" required><button type="submit">Buscar ↗</button></form>
+  </div>
+
+  <section aria-labelledby="stats-title"><div class="section-head stat-intro"><h2 id="stats-title">El archivo en números</h2><span class="meta" id="source-status" role="status">Consultando nuestra API Java…</span></div>
+    <div id="stats" class="stats" aria-live="polite"><p class="state">Consultando el archivo…</p></div></section>
+
+  <section class="discovery-section" aria-labelledby="discovery-heading">
+    <div class="section-head discovery-heading"><div><span class="eyebrow">EXPLORACIÓN / DATOS REALES</span><h2 id="discovery-heading">Tres puertas al archivo.</h2><p>No son tarjetas de adorno: descubre expedientes distintos, guárdalos y abre sus fichas para avanzar en tu cuaderno de investigación.</p></div></div>
+    <div class="discovery-grid">
+      <article class="discovery-slot" data-discovery="character"><div class="discovery-top"><span>01 / PERSONAJES</span><a class="discovery-catalog-link" href="/personajes.html">Ver catálogo ↗</a></div><div class="discovery-result" id="discovery-character" role="status"><p>Buscando una ficha auténtica…</p></div><button type="button" class="discovery-next" data-next="character">↻ Otro personaje</button></article>
+      <article class="discovery-slot" data-discovery="episode"><div class="discovery-top"><span>02 / EPISODIOS</span><a class="discovery-catalog-link" href="/episodios.html">Ver catálogo ↗</a></div><div class="discovery-result" id="discovery-episode" role="status"><p>Buscando un capítulo…</p></div><button type="button" class="discovery-next" data-next="episode">↻ Otro episodio</button></article>
+      <article class="discovery-slot" data-discovery="location"><div class="discovery-top"><span>03 / LUGARES</span><a class="discovery-catalog-link" href="/lugares.html">Ver catálogo ↗</a></div><div class="discovery-result" id="discovery-location" role="status"><p>Buscando un destino…</p></div><button type="button" class="discovery-next" data-next="location">↻ Otro lugar</button></article>
+    </div>
+    <p class="discovery-footnote">Cada ficha se obtiene de PostgreSQL mediante la API REST Java. Tus favoritos se guardan solo en este navegador; abrir la ficha registra tu investigación.</p>
+  </section>
+  <div class="home-next-steps" aria-label="Otras áreas del archivo">
+    <a href="/game.html"><span>JUGAR / SPRINGFIELD FILES</span><strong>¿Puedes resolver el caso 742?</strong><small>Seis fases de investigación con las fichas del archivo.</small></a>
+    <a href="/sobre-mi.html"><span>CONOCER AL CREADOR</span><strong>La cava Duff y mis proyectos.</strong><small>Descubre el código detrás de la experiencia.</small></a>
+  </div>
+  <section class="source-panel" aria-labelledby="source-title">
+    <div class="source-panel-intro"><span class="eyebrow">TRAZABILIDAD / FUENTE EXTERNA</span><h2 id="source-title">De la API al archivo. Sin trucos.</h2>
+      <p>The Simpsons API alimenta el catálogo; Java sincroniza y PostgreSQL conserva. Las consultas del sitio salen de nuestra API REST, no directamente del proveedor.</p>
+      <a class="text-link" href="/creditos.html">Consultar fuentes y arquitectura ↗</a></div>
+    <div class="source-panel-states"><span class="source-panel-caption">ESTADO REAL DE SINCRONIZACIÓN</span><div id="sync-states" aria-live="polite"><p class="state">Consultando el historial de importación…</p></div></div>
+  </section>
+
+</main><footer class="credits" data-chrome="credits"></footer><script type="module" src="/js/home.js?v=1.1.1"></script>
+</body></html>

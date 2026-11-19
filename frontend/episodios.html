@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Episodios · Springfield Archive</title><meta name="description" content="Explora episodios del universo de Los Simpson con datos reales de The Simpsons API, búsqueda y fichas.">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png"><link rel="apple-touch-icon" href="/assets/apple-touch-icon.png"><meta name="theme-color" content="#14252d"><link rel="stylesheet" href="/css/main.css?v=1.1.1"><link rel="stylesheet" href="/css/final.css?v=1.1.1"></head>
+<body><a class="skip-link" href="#main">Saltar al contenido</a><header class="topbar" data-chrome="topbar"><div class="topbar-inner"><a class="brand" href="/index.html" aria-label="Springfield Archive, inicio"><img src="/assets/favicon.svg" width="44" height="44" alt=""><span class="brand-lines"><strong>SPRINGFIELD</strong><em>ARCHIVE</em></span></a></div></header>
+<main id="main">
+  <section class="catalog-hero catalog-hero--episode" aria-labelledby="titulo"><div><span class="eyebrow">COLECCIÓN / ARCHIVO ABIERTO</span><h1 id="titulo">Cada historia deja un expediente.</h1><p>Revisa temporadas, fechas y sinopsis de los episodios conservados en el archivo.</p></div></section>
+  <section aria-label="Catálogo de episodios">
+    <div class="catalog-toolbar"><div class="section-head"><h2>Explorar episodios</h2></div><span class="meta" id="count" role="status">Consultando registros…</span></div>
+    <form class="catalog-filter-panel" id="catalog-filter-form" role="search">
+      <div class="catalog-filter-main"><label for="search">ENCONTRAR UN EPISODIO</label>
+        <div class="catalog-search-row"><input id="search" type="search" maxlength="120" placeholder="Buscar por título, p. ej. Bart the Genius…" autocomplete="off" aria-describedby="search-help"><button type="button" id="clear-search" class="catalog-clear">Limpiar</button></div>
+        <p class="catalog-hint" id="search-help">Filtra por temporada y ordena por emisión. Los títulos originales proceden del proveedor.</p></div>
+      <div class="catalog-filter-fields">
+        <label for="season">TEMPORADA<select id="season" name="season"><option value="">Todas las temporadas</option></select></label>
+        <label for="scope">BUSCAR EN<select id="scope" name="scope"><option value="title">Solo título</option><option value="all">Título, sinopsis y descripción</option></select></label>
+        <label for="order">ORDENAR<select id="order" name="order"><option value="chronological">Del primero al último</option><option value="recent">Del último al primero</option><option value="title">Título A–Z</option></select></label>
+      </div>
+    </form>
+    <div class="catalog-context"><p id="filter-notice" class="catalog-filter-notice" role="status">El número de episodio de esta API es global: T2 comienza en el capítulo #14.</p><button type="button" id="reset-filters" class="catalog-reset">Restablecer filtros ↺</button></div>
+    <div id="results" aria-live="polite"><p class="state">Abriendo los archivadores…</p></div><nav id="pager" class="pager" aria-label="Paginación"></nav>
+  </section>
+</main><footer class="credits" data-chrome="credits"></footer><script type="module" src="/js/episodios.js?v=1.1.1"></script></body></html>
