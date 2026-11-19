@@ -2,7 +2,7 @@
 
 # DECISIONS — Springfield Archive
 
-> **DOCUMENTO HISTÓRICO DEL DISEÑO INICIAL (15/11/2026).** Sus hitos y rutas propuestas no reflejan por sí solos la implementación actual. Para el código realmente presente, los cambios y la validación, consultar `README.md`, `docs/ENTREGA_1_0.md` y `docs/QA_CHECKLIST.md`. Por ejemplo, el frontend implementado consume `/api/v1`, no la ruta `/api` que aquí se había propuesto inicialmente; y los episodios, la investigación y el portafolio ya están incorporados.
+> **DOCUMENTO HISTÓRICO DEL DISEÑO INICIAL (15/11/2026).** Sus hitos y rutas propuestas no reflejan por sí solos la implementación actual. Para el código realmente presente, los cambios y la validación, consultar `README.md`, este registro y `docs/QA_CHECKLIST.md`. Por ejemplo, el frontend implementado consume `/api/v1`, no la ruta `/api` que aquí se había propuesto inicialmente; y los episodios, la investigación y el portafolio ya están incorporados.
 
 Registro de decisiones técnicas del proyecto. Cada decisión indica su estado (**Aprobada**, **Propuesta pendiente**, **Aplazada**), la fecha y, cuando procede, la fuente técnica. Ninguna decisión se marca como aprobada sin evidencia.
 
