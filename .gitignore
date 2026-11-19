@@ -138,3 +138,8 @@ jacoco.exec
 *.ec
 surefire-reports/
 failsafe-reports/
+
+# ---------- Python ----------
+__pycache__/
+*.pyc
+qa-final/
