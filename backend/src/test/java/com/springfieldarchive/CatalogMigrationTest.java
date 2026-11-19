@@ -67,7 +67,7 @@ class CatalogMigrationTest {
     @Test
     void flywayAppliedMigrationsExactlyOnceAndValidates() {
         assertThat(jdbc.queryForObject("SELECT count(*) FROM flyway_schema_history WHERE success", Integer.class))
-                .isEqualTo(7);
+                .isEqualTo(8);
         // validate() comprueba que el esquema real coincide con el historial
         assertThatCode(() -> flyway.validate()).doesNotThrowAnyException();
         // Una nueva ejecución de migrate() no aplica nada (idempotente), sin duplicar datos
