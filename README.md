@@ -40,7 +40,13 @@ La última prueba necesita Docker activo. La sincronización debe terminar en `c
 
 ## Publicación
 
-El frontend está preparado para **Netlify**, pero requiere un **backend Java publicado por HTTPS** y una base PostgreSQL disponible. Consulta **[SUBIR_A_GITHUB_Y_NETLIFY.md](SUBIR_A_GITHUB_Y_NETLIFY.md)** para los pasos y variables de entorno.
+**La aplicación está en línea:**
+
+- **Sitio:** [springfield-archive.netlify.app](https://springfield-archive.netlify.app) (Netlify, frontend estático)
+- **API propia:** [springfield-archive-api.onrender.com](https://springfield-archive-api.onrender.com) (Render Free, backend Java en Docker; `/actuator/health`, `/api/v1/stats`, `/api/v1/characters`, `/api/v1/episodes`, `/api/v1/locations`)
+- **Base de datos:** Neon Free (PostgreSQL 18, migraciones Flyway V1–V8, datos reales importados desde The Simpsons API)
+
+El frontend consulta el backend por HTTPS con CORS restringido; ningún token viaja al navegador. El servicio Free puede tardar ~50 s en despertar tras inactividad; la web muestra el estado y reintenta. Consulta **[SUBIR_A_GITHUB_Y_NETLIFY.md](SUBIR_A_GITHUB_Y_NETLIFY.md)** para los pasos de publicación y las variables de entorno, y [docs/DECISIONS.md](docs/DECISIONS.md) para el registro de auditoría y decisiones.
 
 Mi perfil: [github.com/XtremeStyle](https://github.com/XtremeStyle). Algunos proyectos del portafolio son colaborativos y se reconocen con sus respectivos créditos.
 

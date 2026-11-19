@@ -1,6 +1,6 @@
-# Plan de publicación de Springfield Archive — sin despliegue realizado
+# Despliegue de Springfield Archive — COMPLETADO Y VERIFICADO (2026-11-18/19)
 
-**Importante:** documento de preparación, no autorización para crear servicios, gastar dinero, cambiar credenciales, hacer push o publicar. Verificar elegibilidad y condiciones gratuitas sin tarjeta antes de activar nada.
+**Estado:** publicado. Sitio: https://springfield-archive.netlify.app · Backend: https://springfield-archive-api.onrender.com (Render Free, Docker) · Base: Neon Free (PostgreSQL 18, Flyway V1–V8, importación completa: 1142 personajes, 768 episodios, 477 lugares + catálogo editorial). Detalle y evidencia en docs/DECISIONS.md. El resto del documento conserva el plan y los riesgos originales.
 
 ## Arquitectura propuesta
 
