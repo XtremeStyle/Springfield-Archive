@@ -2,7 +2,7 @@
 
 **Propósito:** demostrar y comprobar que el proyecto consulta The Simpsons API desde Java, persiste los datos en PostgreSQL y muestra información real desde una API REST propia. No se requiere inicio de sesión para explorar el catálogo.
 
-Este documento describe el procedimiento de validación. Los resultados históricos al final corresponden a una versión anterior; para los resultados de la entrega 1.0 consulta [`ENTREGA_1_0.md`](ENTREGA_1_0.md).
+Este documento describe el procedimiento de validación. Los resultados reales de la entrega actual están en [`DECISIONS.md`](DECISIONS.md) y [`AUDITORIA_LANZAMIENTO_2026-11-18.md`](AUDITORIA_LANZAMIENTO_2026-11-18.md); los comandos anteriores son la fuente de verdad.
 
 ## Flujo real
 
