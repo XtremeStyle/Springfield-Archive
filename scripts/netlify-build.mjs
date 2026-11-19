@@ -23,7 +23,7 @@ const csp = "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ances
   // La insignia HUD gratuita de Netlify (/.netlify/scripts/hud) inyecta un iframe con
   // estos dos bloques inline fijos; sus hashes son estables para la variante 'public'.
   + "script-src 'self' 'sha256-BkKP2XO6WOEc3kXOiLr2ZoY83hamalKjPY9xBcbXVuw='; "
-  + "style-src 'self' 'sha256-aZ5Vesr500qgQ+yhuHm+u04dmbLmiGknJzGo7MB+XgI='; " +
+  + "style-src 'self' 'sha256-aZ5Vesr500qgQ+yhuHm+u04dmbLmiGknJzGo7MB+XgI=' 'sha256-3y5TlF5zG6/2W5bLJcFMMnGWSDYZMPAJMXGh07elcnY='; " +
   `img-src 'self' data: https://cdn.thesimpsonsapi.com ${origin}; ` +
   "media-src 'self'; " +
   `connect-src 'self' ${origin}; font-src 'self'`;
